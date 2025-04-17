@@ -27,21 +27,28 @@ header{
     align-items: center;
     padding-left: 40px;
     padding-right: 40px;
+    max-width: 1200px; /*Para evitar problemas en pantallas ultra anchas*/
+    margin: 0 auto; /*Distribuir equitativamente los margenes a la izquierda y a la derecha*/
+}
+
+#logo_principal {
+    width: 300px;
 }
 
 .gens{
     display: flex;
     width: 260px;
-    justify-content: space-between;
+    justify-content: space-around; /*Para un mejor espacio entre ellos*/
 }
 
 .gens button{
     background-color: rgb(255, 255, 255);
     color: rgb(122, 200, 252) ;
     border: 0;
-    height: 40px;
-    width: 80px;
-    border-radius: 9px;
+    height: 30px;
+    width: 70px;
+    border-radius: 6px;
+    font-size: large;
 }
 
 .gens button:hover{
@@ -52,36 +59,46 @@ header{
     min-height: calc(100vh - 320px);;
 }
 
-
-
 /* area pokemons */
-#search-container{
-    margin-top: 90px;
+#search-container {
+    margin: 90px auto 0;
     display: flex;
-    align-self: center;
-    justify-self: center;
-    background-color: aliceblue;
-    width: 700px;
-    height: 50px;
     align-items: center;
+    background-color: aliceblue;
+    width: 450px;
+    height: 50px;
     border-radius: 40px;
+    padding-left: 15px; /* Espacio interno */
 }
+  
+#search-container img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+  
+#search-container input {
+    width: 100%; /* Toma todo el ancho restante */
+    margin-right: 0px;
+    height: 100%;
+    border: none;
+    border-radius: 40px;
+    padding-left: 15px; /* Espacio interno a la izquierda */
+}
+  
 
 #error-text{
     display: none;
 }
 
 #cards{
-    width: 100vw;
-    margin-top: 90px;
+    max-width: 1200px;
+    margin: 90px auto 0;
     display: grid;
     box-sizing: border-box;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* 4 columnas en escritorio */
-    padding: 40px;
-    padding-left: 150px;
-    padding-right: 150px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 40px 150px;
     gap: 3vw;
-
 }
 
 .pokemons-cards{
@@ -186,7 +203,7 @@ footer{
 }
 
 footer p{
-    font-size: 10px;
+    font-size: 13px;
     width: 500px;
 }
 
