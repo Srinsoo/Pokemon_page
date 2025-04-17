@@ -1,0 +1,201 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body{
+    background-image: url("assets/backgroundhd.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* <- esto hace que el fondo se mantenga estático */
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.pixel-font {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+}
+
+header{
+    display: flex;
+    height: 90px;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.gens{
+    display: flex;
+    width: 260px;
+    justify-content: space-between;
+}
+
+.gens button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(122, 200, 252) ;
+    border: 0;
+    height: 40px;
+    width: 80px;
+    border-radius: 9px;
+}
+
+.gens button:hover{
+    cursor: pointer;
+}
+
+#main-area{
+    min-height: calc(100vh - 320px);;
+}
+
+
+
+/* area pokemons */
+#search-container{
+    margin-top: 90px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    background-color: aliceblue;
+    width: 700px;
+    height: 50px;
+    align-items: center;
+    border-radius: 40px;
+}
+
+#error-text{
+    display: none;
+}
+
+#cards{
+    width: 100vw;
+    margin-top: 90px;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* 4 columnas en escritorio */
+    padding: 40px;
+    padding-left: 150px;
+    padding-right: 150px;
+    gap: 3vw;
+
+}
+
+.pokemons-cards{
+    font-size: 10px;
+    max-width: 280px;
+    border-radius: 9px;
+    overflow: hidden;
+    height: auto;
+}
+
+.image{
+    position: relative;
+    height: 200px;
+    background-color: #ffffff73;
+    text-align: center;
+}
+
+.image h1{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    color: #a3a1c5;
+}
+
+.image img{
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+}
+
+.pokdesc{
+    width: 100%;
+    background-color: #242030;
+    color: aliceblue;
+    padding: 15px;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.types{
+    display: flex;
+    padding-top: 4px;
+}
+
+.types div{
+    margin: 3px;
+}
+
+.grass{
+    background-color: #1d6620;
+    border-radius: 3px;
+    width: 70px;
+    padding: 3px;
+    text-align: center;
+}
+
+.fire{
+    background: linear-gradient(to bottom, #f19c1c, #ff0000); /* rojo a blanco */
+    border-radius: 3px;
+    width: 70px;
+    padding: 3px;
+    text-align: center;
+}
+
+.electric{
+    background-color: #e2df1f;
+    border-radius: 3px;
+    width: 70px;
+    padding: 3px;
+    text-align: center;
+}
+
+.type p{
+    font-size: 8px;
+}
+
+
+
+
+/* area footer */
+
+footer{
+    display: flex;
+    height: 170px;
+    background-image: url("assets/grasshdv2.png");
+    background-size:cover;
+    background-position:initial;
+    background-repeat: no-repeat;
+    align-items:end;
+    padding: 20px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+}
+
+footer p{
+    font-size: 10px;
+    width: 500px;
+}
+
+#nintendo-watermark{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#nintendologo{
+    filter: brightness(0) invert(1);
+}
