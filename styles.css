@@ -87,13 +87,19 @@ header{
     margin-right: 10px;
 }
   
-#search-container input {
+#search-container select {
     width: 100%; /* Toma todo el ancho restante */
     margin-right: 0px;
     height: 100%;
     border: none;
     border-radius: 40px;
+    outline: none;
+    appearance: none;
     padding-left: 15px; /* Espacio interno a la izquierda */
+}
+
+#search-container select:hover {
+    background-color: whitesmoke;             /* Un poco más oscuro al pasar el mouse */
 }
 
 #error-section{

@@ -14,7 +14,7 @@ async function cargarPokemons() { //Funcion principal de carga de pokemons
       fetch(pokemon.url).then(r => r.json()) //Usamos fetch otra vez para obtener todos los detalles los pokemon, (los cuales estan en la url que está en el objeto que se entrego con el fetch original), cada uno por cada uno especificamente. 
     ); //Then toma la respuesta del fetch, y con una funcion flecha lo combierte en objeto JS, el objeto response transformado a JSON es r.
     todosLosPokemons = data.results; //Guardamos el array de pokemons obtenidos desde la API, los cuales tenemos gracias al res.josn(). 410 pokemon
-    cargarRangoPokemons(1,15); 
+    cargarRangoPokemons(1,15);
 
 
   } catch (error) {
@@ -27,6 +27,7 @@ async function cargarPokemons() { //Funcion principal de carga de pokemons
 async function cargarRangoPokemons(from,to){
   cards.innerHTML= ""; //Limpiamos el contenido actual de las cards para no acumularlas
   const pokemonsAMostrar = todosLosPokemons.slice(from - 1, to); //.slice nos permite tomar una parte del array. En este caso desde la posicion from - 1 hasta to (valores ya preestablecidos). from - 1 porque los arrays comienzan en 0.
+  llenarSelect(pokemonsAMostrar);
 
   const informacion = await Promise.all( //Esperá a que todas las peticiones se resuelvan, y después guardá la info completa de todos los Pokémon en informacion
     pokemonsAMostrar.map(p => fetch(p.url).then(r => r.json())) //De los pokemon a mostar, recorre el array y transforma cada objeto en otra cosa... Del fetch obtienes la info en bruto, y la pasas al .then que la trans forma a un objeto JS.
@@ -44,7 +45,7 @@ async function cargarRangoPokemons(from,to){
     //A cards le agregamos ...
     //todo eso son propiedades que ya tenemos
     cards.innerHTML += ` 
-      <div class="pokemons-cards">
+      <div class="pokemons-cards" id="${pokemon.name}">
         <div class="image">
           <img width="170px" src="${pokemon.sprites.front_default}" alt="${pokemon.name}"> 
           <h1>${String(pokemon.id).padStart(3, '0')}</h1>
@@ -69,6 +70,41 @@ async function cargarRangoPokemons(from,to){
 
 
 }
+
+const selectFiltro = document.getElementById("pokemon_filtro");
+
+function llenarSelect(pokemons) {
+  selectFiltro.innerHTML = `<option value="">Selecciona un Pokémon</option>`;
+  
+  pokemons.forEach(p => {
+    const option = document.createElement("option");
+    option.value = p.name;
+    option.textContent = p.name;
+    selectFiltro.appendChild(option);
+  });
+}
+
+
+selectFiltro.addEventListener("change", (e) => {
+  const seleccionado = e.target.value; // el nombre numérico del Pokémon
+  const todasLasTarjetas = document.querySelectorAll('.pokemons-cards');
+
+  if (seleccionado === "") {
+    // Mostrar todas las tarjetas
+    todasLasTarjetas.forEach(t => t.style.display = "block");
+  } else {
+    // Ocultar todas
+    todasLasTarjetas.forEach(t => t.style.display = "none");
+
+    // Mostrar solo la tarjeta con el id seleccionado
+    const tarjeta = document.getElementById(seleccionado);
+    if (tarjeta) {
+      tarjeta.style.display = "block";
+    }
+  }
+});
+
+
 
 //esto se activa al presionar el botón, lo que ejecuta todo el código anteriormente visto dándole funcionalidad a la página.
 window.addEventListener("DOMContentLoaded", cargarPokemons);
