@@ -15,11 +15,6 @@ body{
     overflow-x: hidden;
 }
 
-.pixel-font {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-}
-
 header{
     display: flex;
     height: 90px;
@@ -41,14 +36,29 @@ header{
     justify-content: space-around; /*Para un mejor espacio entre ellos*/
 }
 
-.gens button{
+.gens button {
     background-color: rgb(255, 255, 255);
-    color: rgb(122, 200, 252) ;
+    color: rgb(122, 200, 252);
     border: 0;
     height: 30px;
-    width: 70px;
+    width: 77px;
     border-radius: 6px;
-    font-size: large;
+    font-size: 15px;
+  
+    transition:
+      background-color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+      border 0.05s cubic-bezier(0.25, 0.8, 0.25, 1),
+      color 0.1s cubic-bezier(0.25, 0.8, 0.25, 1),
+      box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+.gens button:hover{
+    border: solid 2px #396cf7;
+    box-shadow: 0px 4px 10px rgba(31, 60, 140, 0.2);
+}
+
+#btn-gen1{
+    background-color: #1b357c;
 }
 
 .gens button:hover{
@@ -56,7 +66,7 @@ header{
 }
 
 #main-area{
-    min-height: calc(100vh - 320px);;
+    min-height: calc(100vh - 350px);;
 }
 
 /* area pokemons */
@@ -85,10 +95,18 @@ header{
     border-radius: 40px;
     padding-left: 15px; /* Espacio interno a la izquierda */
 }
-  
+
+#error-section{
+    padding: 200px;
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+    color:#242030;
+    display: none;
+}
 
 #error-text{
-    display: none;
+    display: flex;
 }
 
 #cards{
@@ -96,16 +114,16 @@ header{
     margin: 90px auto 0;
     display: grid;
     box-sizing: border-box;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     padding: 40px 150px;
     gap: 3vw;
+    justify-content: center;
 }
 
 .pokemons-cards{
     font-size: 10px;
     max-width: 280px;
     border-radius: 9px;
-    overflow: hidden;
     height: auto;
 }
 
@@ -114,18 +132,20 @@ header{
     height: 200px;
     background-color: #ffffff73;
     text-align: center;
+    border-radius: 9px 9px 0px 0px;
 }
 
 .image h1{
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 70px;
-    color: #a3a1c5;
+    color: #a09fbb;
 }
 
 .image img{
+    width: 200px;
     position: absolute; 
     top: 50%;
     left: 50%;
@@ -138,6 +158,7 @@ header{
     background-color: #242030;
     color: aliceblue;
     padding: 15px;
+    border-radius: 0px 0px 9px 9px;
 }
 
 .name{
@@ -155,7 +176,7 @@ header{
 }
 
 .grass{
-    background-color: #1d6620;
+    background-color: #27a52b;
     border-radius: 3px;
     width: 70px;
     padding: 3px;
@@ -170,18 +191,116 @@ header{
     text-align: center;
 }
 
-.electric{
-    background-color: #e2df1f;
+.steel{
+    background: linear-gradient(to bottom, #d1d1d1, #858484); /* rojo a blanco */
     border-radius: 3px;
     width: 70px;
     padding: 3px;
     text-align: center;
 }
 
+.electric{
+    background-color: #e2df1f;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.poison{
+    background-color: #be20dd;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.flying{
+    background-color: #a282f9;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.bug{
+    background-color: #91d335;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.water {
+    background-color: #6890f0;
+    border-radius: 3px;
+    width: 70px;
+    padding: 3px;
+    text-align: center;
+}
+
+.normal {
+    background-color: #868686;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.ground{
+    background-color: #c3b27e;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.fighting{
+    background-color: #e11b1b;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+.dark{
+    background-color: #505050;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+}
+
+
+
 .type p{
     font-size: 8px;
 }
 
+.pokemons-cards:hover .image img{
+    top: 45%;
+    width: 220px;
+    transition: 0.3s ease;
+
+}
+
+.pokemons-cards:hover .ability{
+    opacity: 1;
+    max-height: 200px; /* ajusta este valor según el contenido */
+}
+
+.ability {
+    opacity: 1;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    margin-top: 9px;
+}
+
+.ability ul{
+    margin-top: 9px;
+}
+
+.ability ul li{
+    list-style: none;
+    margin: 4px;
+    background-color: #e7e7dd;
+    padding: 5px;
+    color: #676668;
+    border-radius: 2px;
+}
 
 
 

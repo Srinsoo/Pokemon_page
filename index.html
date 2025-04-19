@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
@@ -10,8 +11,8 @@
 
   <header>
     <nav class="gens">
-      <button>Gen1</button>
-      <button>Gen2</button>
+      <button id="btn-gen1">Gen1</button>
+      <button id="btn-gen2">Gen2</button>
     </nav>
         
     <div>
@@ -19,8 +20,8 @@
     </div>
         
     <nav class="gens">
-      <button>Gen3</button>
-      <button>Gen4</button>
+      <button id="btn-gen3">Gen3</button>
+      <button id="btn-gen4">Gen4</button>
     </nav>
   </header>
   
@@ -34,249 +35,16 @@
       <!-- Campo de entrada -->
       <input type="text" id="search-input" placeholder="Busca aquí...">
     </div>
-    <!--En proceso de ajuste-->
+
+    <div id="error-section">
+      <h1 id="error-text">Ups.. no se encontraron pokemons, intenta más tarde.</h1>
+    </div>
+
     <div id="cards">
-      <h1 id="error-text"></h1>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>002</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Charizard</h1>
-            <p class="pokenumer">002</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
-
-      <div class="pokemons-cards">
-        <div class="image">
-          <img width="170px" src="assets/color-pixels-charizard.png" alt="">
-          <h1>001</h1>
-        </div>
-        <div class="pokdesc">
-          <div class="name">
-            <h1 class="pokename">Venasaur</h1>
-            <p class="pokenumer">001</p>
-          </div>
-          <div class="types">
-            <div class="fire"><p>FIRE</p></div>
-          </div>  
-        </div>
-      </div>
+      
+      
+      
+      
 
     </div>
 
