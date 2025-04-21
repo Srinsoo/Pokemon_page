@@ -66,7 +66,7 @@ header{
 }
 
 #main-area{
-    min-height: calc(100vh - 350px);;
+    min-height: calc(100vh - 350px);
 }
 
 /* area pokemons */

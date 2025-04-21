@@ -71,35 +71,35 @@ async function cargarRangoPokemons(from,to){
 
 }
 
-const selectFiltro = document.getElementById("pokemon_filtro");
+const selectFiltro = document.getElementById("pokemon_filtro"); //Hacemos referencia al elemento <select> y lo guardamos para usarlo despues
 
-function llenarSelect(pokemons) {
-  selectFiltro.innerHTML = `<option value="">Selecciona un Pokémon</option>`;
+function llenarSelect(pokemons) { //Recibe un array
+  selectFiltro.innerHTML = `<option value="">Selecciona un Pokémon</option>`; //Reinicia el contenido del select, dejando solo una opción inicial vacía
   
-  pokemons.forEach(p => {
-    const option = document.createElement("option");
-    option.value = p.name;
-    option.textContent = p.name;
-    selectFiltro.appendChild(option);
+  pokemons.forEach(p => { //Recorremos el array con foreach
+    const option = document.createElement("option"); // Para cada pokemon se crea un <option> (esto crea el objeto HTML <option>)
+    option.value = p.name; //El valor sera el nombre del pokemon
+    option.textContent = p.name; //El texto sera el nombre del pokemon tambien
+    selectFiltro.appendChild(option); //Lo agrega al select con appendChild
   });
 }
 
 
-selectFiltro.addEventListener("change", (e) => {
-  const seleccionado = e.target.value; // el nombre numérico del Pokémon
-  const todasLasTarjetas = document.querySelectorAll('.pokemons-cards');
+selectFiltro.addEventListener("change", (e) => { //Se activa cada vez que el usuario cambia la selección del select
+  const seleccionado = e.target.value; // Guardamos en la variable seleccionado el valor del pokemon elegido. Si no = ""
+  const todasLasTarjetas = document.querySelectorAll('.pokemons-cards'); // Selecciona todas las tarjetas de pokemon que tengan la clase .pokemons-cards
 
-  if (seleccionado === "") {
+  if (seleccionado === "") { //Si no hay ningun pokemon seleccionado se muestran todas las tarjetas
     // Mostrar todas las tarjetas
-    todasLasTarjetas.forEach(t => t.style.display = "block");
-  } else {
+    todasLasTarjetas.forEach(t => t.style.display = "block"); //Va a cada tarjeta y con style.display = "block" se van mostrando
+  } else { //Si no, se ocultan todas las tarjetas
     // Ocultar todas
     todasLasTarjetas.forEach(t => t.style.display = "none");
 
     // Mostrar solo la tarjeta con el id seleccionado
-    const tarjeta = document.getElementById(seleccionado);
+    const tarjeta = document.getElementById(seleccionado); //Busca la tarjeta con id igual al nombre del pokemon seleccionado
     if (tarjeta) {
-      tarjeta.style.display = "block";
+      tarjeta.style.display = "block"; //Si la encuentra la muestra.
     }
   }
 });
