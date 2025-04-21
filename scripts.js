@@ -146,3 +146,81 @@ document.getElementById("btn-gen4").addEventListener("click", (e) => {
   boton2.style.backgroundColor = "#ffffff"
   boton3.style.backgroundColor = "#ffffff"
 });
+
+
+
+
+
+
+
+const header = document.querySelector("header");
+const hamburguesa = document.getElementById("hamburguesa");
+
+// Crear el panel del menú
+const panel = document.createElement("div");
+panel.classList.add("menu-panel");
+
+// Crear botón de cierre (la X)
+const closeBtn = document.createElement("button");
+closeBtn.innerHTML = "✖";
+closeBtn.id = "close-btn";
+closeBtn.style.fontSize = "28px";
+closeBtn.style.background = "none";
+closeBtn.style.border = "none";
+closeBtn.style.position = "absolute";
+closeBtn.style.top = "15px";
+closeBtn.style.right = "15px";
+closeBtn.style.cursor = "pointer";
+
+// Crear contenedor de botones (sin mover los originales)
+const btnContainer = document.createElement("div");
+btnContainer.id = "panel-buttons";
+btnContainer.style.display = "flex";
+btnContainer.style.flexDirection = "column";
+btnContainer.style.alignItems = "center";
+btnContainer.style.justifyContent = "center";
+btnContainer.style.gap = "15px";
+
+// Copiar texto y eventos
+["btn-gen1", "btn-gen2", "btn-gen3", "btn-gen4"].forEach(id => {
+  const originalBtn = document.getElementById(id);
+  const copy = originalBtn.cloneNode(true);
+  copy.addEventListener("click", () => {
+    originalBtn.click(); // ejecutamos el evento original
+    panel.classList.remove("active");
+    header.classList.remove("menu-open");
+    hamburguesa.style.display = "block";
+  });
+  btnContainer.appendChild(copy);
+});
+
+panel.appendChild(closeBtn);
+panel.appendChild(btnContainer);
+document.body.appendChild(panel);
+
+// Mostrar menú
+hamburguesa.addEventListener("click", () => {
+  panel.classList.add("active");
+  header.classList.add("menu-open");
+  hamburguesa.style.display = "none";
+});
+
+// Cerrar menú con la X
+closeBtn.addEventListener("click", () => {
+  panel.classList.remove("active");
+  header.classList.remove("menu-open");
+  hamburguesa.style.display = "block";
+});
+
+// Cerrar menú si se redimensiona
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 768) {
+    panel.classList.remove("active");
+    header.classList.remove("menu-open");
+    hamburguesa.style.display = "none";
+  } else {
+    if (!panel.classList.contains("active")) {
+      hamburguesa.style.display = "block";
+    }
+  }
+});

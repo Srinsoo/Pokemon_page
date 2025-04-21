@@ -1,0 +1,100 @@
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    /* Ocultamos los nav por defecto */
+    nav.gens {
+      display: none;
+    }
+  
+    /* Estilos del header */
+    header {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    #hamburguesa {
+      display: block;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  
+    /* Panel lateral (solo mitad de la pantalla) */
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      left: -50vw; /* Empuja el menú fuera de la pantalla */
+      width: 50vw; /* Solo el 50% de la pantalla */
+      height: 100vh;
+      background-color: white;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2); /* Sombra lateral */
+      transition: transform 0.3s ease; /* Animación al abrir */
+    }
+  
+    .menu-panel.active {
+      display: flex;
+      transform: translateX(50vw); /* Mueve el panel a su posición visible */
+    }
+  
+    .menu-panel button {
+      margin: 12px 0;
+      padding: 10px 20px;
+      background-color: #eee;
+      border: none;
+      font-size: 18px;
+      border-radius: 6px;
+      width: 80%;
+    }
+  
+    /* Botón hamburguesa para cerrar */
+    .menu-panel #hamburguesa {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 28px;
+    }
+  
+    /* Ocultar logo cuando el menú está abierto */
+    header.menu-open > div {
+      display: none;
+    }
+  }
+  
+  /* Para pantallas grandes (escritorio) */
+  @media (min-width: 768px) {
+    /* Mostrar los botones de navegación (generaciones) en escritorio */
+    nav.gens {
+      display: flex !important;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+    nav.gens button {
+      margin: 0 10px;
+      padding: 10px;
+    }
+  
+    #hamburguesa {
+      display: none;
+    }
+  
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .menu-panel {
+      display: none !important;
+    }
+  }
+  
