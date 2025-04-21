@@ -1,100 +1,147 @@
-/* Para pantallas pequeñas (móviles) */
-@media (max-width: 767px) {
-    /* Ocultamos los nav por defecto */
-    nav.gens {
-      display: none;
-    }
-  
-    /* Estilos del header */
-    header {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-    }
-  
-    #hamburguesa {
-      display: block;
-      font-size: 28px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 1001;
-    }
-  
-    /* Panel lateral (solo mitad de la pantalla) */
-    .menu-panel {
-      position: fixed;
-      top: 0;
-      left: -50vw; /* Empuja el menú fuera de la pantalla */
-      width: 50vw; /* Solo el 50% de la pantalla */
-      height: 100vh;
-      background-color: white;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2); /* Sombra lateral */
-      transition: transform 0.3s ease; /* Animación al abrir */
-    }
-  
-    .menu-panel.active {
-      display: flex;
-      transform: translateX(50vw); /* Mueve el panel a su posición visible */
-    }
-  
-    .menu-panel button {
-      margin: 12px 0;
-      padding: 10px 20px;
-      background-color: #eee;
-      border: none;
-      font-size: 18px;
-      border-radius: 6px;
-      width: 80%;
-    }
-  
-    /* Botón hamburguesa para cerrar */
-    .menu-panel #hamburguesa {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 28px;
-    }
-  
-    /* Ocultar logo cuando el menú está abierto */
-    header.menu-open > div {
-      display: none;
-    }
+@media (max-width: 768px) {
+  /* Ocultar elementos para desktop */
+  .header_principal {
+    display: none;
+  }
+
+  #hamburguesa {
+    display: block;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: whitesmoke;
+  }
+
+  /* Cabecera móvil: botón hamburguesa y logo */
+  .header_mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 0px;
+  }
+
+
+  /* Estilos para el menú lateral */
+  .mobile_only {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw; /* Cubre la mitad de la pantalla */
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 1rem 1rem; /* El top padding evita que se solape con la cabecera */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  /* Clase que activa el menú */
+  .mobile_only.active {
+    transform: translateX(0);
+  }
+
+    /* Botón de cierre “X” */
+  .close_menu {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+  }
+
+  /* Overlay que bloquea el resto de la pantalla */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 50vw;         /* Se coloca a la derecha del menú */
+    width: 50vw;        /* Cubre la otra mitad de la pantalla */
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.5); /* Fondo blanco semitransparente */
+    display: none;
+    z-index: 1000;
   }
   
-  /* Para pantallas grandes (escritorio) */
-  @media (min-width: 768px) {
-    /* Mostrar los botones de navegación (generaciones) en escritorio */
-    nav.gens {
-      display: flex !important;
-      justify-content: space-around;
-      align-items: center;
-    }
-  
-    nav.gens button {
-      margin: 0 10px;
-      padding: 10px;
-    }
-  
-    #hamburguesa {
-      display: none;
-    }
-  
-    header {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .menu-panel {
-      display: none !important;
-    }
+  .overlay.active {
+    display: block;
   }
-  
+
+  #logo_principal_m {
+    width: 250px;
+    margin: 0px;
+    padding: 0%;
+  }
+
+  .logo_prin_m {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    padding: 5px;
+  }
+
+  .logo_prin_m figcaption {
+    margin-top: 0px; /* Reduce el espacio superior entre la imagen y el texto */
+    font-size: 0.9rem; /* Ajusta el tamaño si quieres que sea proporcional */
+    color: #333; /* Establece el color del texto para buena visibilidad */
+  }
+
+  /* Estilo para los botones del menú lateral */
+  .mobile_only button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(122, 200, 252);
+    border: 0px;
+    height: 50px;
+    width: 40%;
+    border-radius: 6px;
+    font-size: 15px;
+    margin: 30px;
+    transition:
+      background-color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+      border 0.05s cubic-bezier(0.25, 0.8, 0.25, 1),
+      color 0.1s cubic-bezier(0.25, 0.8, 0.25, 1),
+      box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  #cards {
+    grid-template-columns: 1fr; /* Fuerza una sola columna */
+    justify-items: center; /* Centra cada tarjeta dentro de la columna */
+  }
+
+  .pokemons-cards {
+    width: 100%;
+  }
+
+  #search-container {
+    max-width: 450px; /* La barra ocupará el 90% del ancho de la pantalla */
+    width: 80%;
+    height: 45px; /* Altura ajustada para pantallas pequeñas */
+    border-radius: 30px; /* Redondeado más sutil */
+    margin: 20px auto; /* Reduce el margen superior para pantallas pequeñas */
+  }
+
+  footer {
+    flex-direction: column; /* Elementos en una columna */
+    align-items: center; /* Centra horizontalmente */
+    padding-bottom: 0%;
+    padding-top: 50px;
+  }
+
+  footer p {
+    font-size: 12px; /* Reduce el tamaño de fuente */
+    width: 90%; /* Ancho ajustable para ocupar todo el espacio disponible */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Sombra leve */
+  }
+
+  #nintendo-watermark {
+    gap: 5px; /* Reduce el espaciado entre imágenes */
+  }
+
+  #nintendo-watermark img {
+    width: 60px; /* Ajusta el tamaño de las imágenes en pantallas pequeñas */
+  }
+
+}

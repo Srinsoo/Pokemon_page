@@ -71,6 +71,7 @@ async function cargarRangoPokemons(from,to){
 
 }
 
+
 const selectFiltro = document.getElementById("pokemon_filtro"); //Hacemos referencia al elemento <select> y lo guardamos para usarlo despues
 
 function llenarSelect(pokemons) { //Recibe un array
@@ -109,118 +110,71 @@ selectFiltro.addEventListener("change", (e) => { //Se activa cada vez que el usu
 //esto se activa al presionar el botón, lo que ejecuta todo el código anteriormente visto dándole funcionalidad a la página.
 window.addEventListener("DOMContentLoaded", cargarPokemons);
 
+//Selecionamos y guardamos todos los botones, tanto los de desktop como los mobile
+const botonesGen1 = document.querySelectorAll("#btn-gen1, #btn-gen1-m");
+const botonesGen2 = document.querySelectorAll("#btn-gen2, #btn-gen2-m");
+const botonesGen3 = document.querySelectorAll("#btn-gen3, #btn-gen3-m");
+const botonesGen4 = document.querySelectorAll("#btn-gen4, #btn-gen4-m");
 
-const boton1 = document.getElementById("btn-gen1");
-const boton2 = document.getElementById("btn-gen2");
-const boton3 = document.getElementById("btn-gen3");
-const boton4 = document.getElementById("btn-gen4");
+// Agrupamos todos los botones para poder reiniciar colores fácilmente
+const todosLosBotones = [
+  ...botonesGen1,
+  ...botonesGen2,
+  ...botonesGen3,
+  ...botonesGen4
+];
 
-document.getElementById("btn-gen1").addEventListener("click", (e) => {
-  cargarRangoPokemons(1, 15);
-  e.target.style.backgroundColor = "#1b1c3f"
-  boton2.style.backgroundColor = "#ffffff"
-  boton3.style.backgroundColor = "#ffffff"
-  boton4.style.backgroundColor = "#ffffff"
-});
+// Función que asigna eventos y colores por generación
+function asignarEvento(botones, inicio, fin) { //Funcion que resive los botones y el rango de los pokemons a mostrar
+  botones.forEach(boton => { //Para cada boton hacer...
+    boton.addEventListener("click", (e) => { //Para cada boton escuchar el click
+      cargarRangoPokemons(inicio, fin); //Cargamos los pokemon del boton correspondiente
 
-document.getElementById("btn-gen2").addEventListener("click", (e) => {
-  cargarRangoPokemons(152, 166);
-  e.target.style.backgroundColor = "#1b1c3f"
-  boton1.style.backgroundColor = "#ffffff"
-  boton3.style.backgroundColor = "#ffffff"
-  boton4.style.backgroundColor = "#ffffff"
-});
-
-document.getElementById("btn-gen3").addEventListener("click", (e) => {
-  cargarRangoPokemons(252, 266);
-  e.target.style.backgroundColor = "#1b1c3f"
-  boton1.style.backgroundColor = "#ffffff"
-  boton2.style.backgroundColor = "#ffffff"
-  boton4.style.backgroundColor = "#ffffff"
-});
-
-document.getElementById("btn-gen4").addEventListener("click", (e) => {
-  cargarRangoPokemons(387, 401);
-  e.target.style.backgroundColor = "#1b1c3f"
-  boton1.style.backgroundColor = "#ffffff"
-  boton2.style.backgroundColor = "#ffffff"
-  boton3.style.backgroundColor = "#ffffff"
-});
-
-
-
-
-
-
-
-const header = document.querySelector("header");
-const hamburguesa = document.getElementById("hamburguesa");
-
-// Crear el panel del menú
-const panel = document.createElement("div");
-panel.classList.add("menu-panel");
-
-// Crear botón de cierre (la X)
-const closeBtn = document.createElement("button");
-closeBtn.innerHTML = "✖";
-closeBtn.id = "close-btn";
-closeBtn.style.fontSize = "28px";
-closeBtn.style.background = "none";
-closeBtn.style.border = "none";
-closeBtn.style.position = "absolute";
-closeBtn.style.top = "15px";
-closeBtn.style.right = "15px";
-closeBtn.style.cursor = "pointer";
-
-// Crear contenedor de botones (sin mover los originales)
-const btnContainer = document.createElement("div");
-btnContainer.id = "panel-buttons";
-btnContainer.style.display = "flex";
-btnContainer.style.flexDirection = "column";
-btnContainer.style.alignItems = "center";
-btnContainer.style.justifyContent = "center";
-btnContainer.style.gap = "15px";
-
-// Copiar texto y eventos
-["btn-gen1", "btn-gen2", "btn-gen3", "btn-gen4"].forEach(id => {
-  const originalBtn = document.getElementById(id);
-  const copy = originalBtn.cloneNode(true);
-  copy.addEventListener("click", () => {
-    originalBtn.click(); // ejecutamos el evento original
-    panel.classList.remove("active");
-    header.classList.remove("menu-open");
-    hamburguesa.style.display = "block";
+      // Estilo para el botón presionado
+      todosLosBotones.forEach(b => b.style.backgroundColor = "#ffffff"); //los demas botones en blanco
+      e.target.style.backgroundColor = "#1b1c3f"; //El selecionado en otro color
+    });
   });
-  btnContainer.appendChild(copy);
+}
+
+// Asignamos la función a cada grupo de botones con su respectivo rango
+asignarEvento(botonesGen1, 1, 15);
+asignarEvento(botonesGen2, 152, 166);
+asignarEvento(botonesGen3, 252, 266);
+asignarEvento(botonesGen4, 387, 401);
+
+
+
+
+
+// Elementos del DOM
+const hamburger = document.getElementById("hamburguesa");
+const mobileMenu = document.querySelector(".mobile_only");
+const closeBtn = document.querySelector(".mobile_only .close_menu");
+const overlay = document.querySelector(".overlay");
+
+// Abrir el menú móvil al hacer clic en el botón hamburguesa
+hamburger.addEventListener("click", () => {
+  mobileMenu.classList.add("active");
+  overlay.classList.add("active");
 });
 
-panel.appendChild(closeBtn);
-panel.appendChild(btnContainer);
-document.body.appendChild(panel);
-
-// Mostrar menú
-hamburguesa.addEventListener("click", () => {
-  panel.classList.add("active");
-  header.classList.add("menu-open");
-  hamburguesa.style.display = "none";
-});
-
-// Cerrar menú con la X
+// Cerrar el menú al hacer clic en el botón de cierre ("X")
 closeBtn.addEventListener("click", () => {
-  panel.classList.remove("active");
-  header.classList.remove("menu-open");
-  hamburguesa.style.display = "block";
+  mobileMenu.classList.remove("active");
+  overlay.classList.remove("active");
 });
 
-// Cerrar menú si se redimensiona
+// Cerrar el menú al hacer clic en el overlay
+overlay.addEventListener("click", () => {
+  mobileMenu.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Si la ventana se agranda, cerrar automáticamente el menú
 window.addEventListener("resize", () => {
-  if (window.innerWidth >= 768) {
-    panel.classList.remove("active");
-    header.classList.remove("menu-open");
-    hamburguesa.style.display = "none";
-  } else {
-    if (!panel.classList.contains("active")) {
-      hamburguesa.style.display = "block";
-    }
+  if (window.innerWidth > 768) {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
   }
 });

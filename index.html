@@ -11,24 +11,47 @@
 <body>
 
   <header>
-    <button id="hamburguesa">&#9776;</button>
+    <div class="header_principal">
+      <nav class="gens_left">
+        <button id="btn-gen1">Gen1</button>
+        <button id="btn-gen2">Gen2</button>
+      </nav>
+    
+      <div>
+        <img src="assets\logopkmcolor.png" alt="Logo principal" id="logo_principal">
+      </div>
+    
+      <nav class="gens_right">
+        <button id="btn-gen3">Gen3</button>
+        <button id="btn-gen4">Gen4</button>
+      </nav>
+    </div>
 
-    <nav class="gens">
-      <button id="btn-gen1">Gen1</button>
-      <button id="btn-gen2">Gen2</button>
-    </nav>
-  
-    <div>
-      <img src="assets\logopkmcolor.png" alt="Logo principal" id="logo_principal">
+    <div class="header_mobile">
+     
+      <button id="hamburguesa" class="hamburguesa">&#9776;</button>
+
+      <div class="logo">
+        <img src="assets/logopkmcolor.png" alt="Logo principal" id="logo_principal_m">
+      </div>
+
     </div>
   
-    <nav class="gens">
-      <button id="btn-gen3">Gen3</button>
-      <button id="btn-gen4">Gen4</button>
+    <!-- Menú lateral móvil -->
+    <nav class="mobile_only">
+      <button class="close_menu">X</button>
+      <div class="logo_prin_m">
+        <img src="assets/Logo PKM 2.png" alt="Logo principal" id="logo_principal_m">
+        <figcaption>Generations</figcaption>
+      </div>
+      <button id="btn-gen1-m">Gen1</button>
+      <button id="btn-gen2-m">Gen2</button>
+      <button id="btn-gen3-m">Gen3</button>
+      <button id="btn-gen4-m">Gen4</button>
     </nav>
-
   </header>
-  
+  <!-- Overlay para desactivar la interacción con el contenido “atrás” -->
+  <div class="overlay mobile-only"></div>
 
   <section id="main-area">
     
@@ -47,10 +70,6 @@
     </div>
 
     <div id="cards">
-      
-      
-      
-      
 
     </div>
 

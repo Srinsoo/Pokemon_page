@@ -15,7 +15,18 @@ body{
     overflow-x: hidden;
 }
 
-header{
+/*header{
+    border: 4px solid black;
+    display: flex;
+    height: 90px;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 1200px; Para evitar problemas en pantallas ultra anchas
+    margin: 0 auto; Distribuir equitativamente los margenes a la izquierda y a la derecha
+}*/
+
+.header_principal {
     display: flex;
     height: 90px;
     justify-content: space-around;
@@ -26,21 +37,29 @@ header{
     margin: 0 auto; /*Distribuir equitativamente los margenes a la izquierda y a la derecha*/
 }
 
+.header_mobile {
+    display: none;
+}
+
+.mobile_only {
+    display: none;
+}
+
 #hamburguesa {
-    display: none; /* Oculto por defecto */
+    display: none;
 }
 
 #logo_principal {
     width: 300px;
 }
 
-.gens{
+.gens_left, .gens_right{
     display: flex;
     width: 260px;
     justify-content: space-around; /*Para un mejor espacio entre ellos*/
 }
 
-.gens button {
+.gens_left button, .gens_right button {
     background-color: rgb(255, 255, 255);
     color: rgb(122, 200, 252);
     border: 0;
@@ -56,7 +75,7 @@ header{
       box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
-.gens button:hover{
+.gens_left button:hover, .gens_right button:hover{
     border: solid 2px #396cf7;
     box-shadow: 0px 4px 10px rgba(31, 60, 140, 0.2);
 }
@@ -65,17 +84,17 @@ header{
     background-color: #1b357c;
 }
 
-.gens button:hover{
+.gens_left button:hover, .gens_right button:hover{
     cursor: pointer;
 }
 
 #main-area{
-    min-height: calc(100vh - 350px);
+    min-height: calc(100vh - 170px);
 }
 
 /* area pokemons */
 #search-container {
-    margin: 90px auto 0;
+    margin: 40px auto 0;
     display: flex;
     align-items: center;
     background-color: aliceblue;
@@ -103,7 +122,7 @@ header{
 }
 
 #search-container select:hover {
-    background-color: whitesmoke;             /* Un poco más oscuro al pasar el mouse */
+    background-color: whitesmoke; /* Un poco más oscuro al pasar el mouse */
 }
 
 #error-section{
@@ -121,14 +140,17 @@ header{
 
 #cards{
     max-width: 1200px;
-    margin: 90px auto 0;
+    margin: 40px auto 0;
     display: grid;
     box-sizing: border-box;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    padding: 40px 150px;
+    grid-template-columns: repeat(3, 1fr); /* Máximo 3 columnas en pantallas grandes */
+    padding: 40px ;
     gap: 3vw;
+    align-items: center;
     justify-content: center;
 }
+
 
 .pokemons-cards{
     font-size: 10px;
@@ -317,23 +339,27 @@ header{
 /* area footer */
 
 footer{
-    display: flex;
-    height: 170px;
-    background-image: url("assets/grasshdv2.png");
-    background-size:cover;
-    background-position:initial;
+    position: relative; /* El footer se adapta dependiendo del contenido */
+    bottom: 0; /* Asegura su posición en la parte inferior */
+    width: 100%; /* Ocupa todo el ancho */
+    display: flex; /* Flexbox para organizar los elementos */
+    
+    height: auto; /* Ajusta la altura según el contenido */
+    background-image: url("assets/grasshdv2.png"); /* Mantiene el fondo */
+    background-size: cover;
+    background-position: initial;
     background-repeat: no-repeat;
-    align-items:end;
-    padding: 20px;
-    padding-left: 10vw;
-    padding-right: 10vw;
-    justify-content: space-between;
+    align-items: center; /* Centra los elementos dentro del footer */
+    justify-content: space-around; /* Distribuye el espacio entre los elementos */
+    padding: 20px; /* Espaciado interno */
     color: rgb(255, 255, 255);
 }
 
 footer p{
     font-size: 13px;
-    width: 500px;
+    width: auto;
+    padding: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Sombra leve */
 }
 
 #nintendo-watermark{
